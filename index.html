@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="white">
+<title>Scam Scale — Terrible Tech</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; background: #fff; font-family: 'Poppins', sans-serif; overflow: hidden; }
+
+/* Only one page visible at a time */
+#p1, #p2 {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#p1 { visibility: visible; }
+#p2 { visibility: hidden; justify-content: space-evenly; padding: 16px 20px; }
+
+/* PAGE 1 */
+#p1-title { text-align: center; flex-shrink: 0; padding: 8px 0 0; line-height: 1.15; }
+.t1 { font-size: 4.8vw; font-weight: 900; color: #1e3a5f; text-transform: uppercase; letter-spacing: 0.04em; }
+.t2 { font-size: 3vw; font-weight: 800; color: #5A8EB4; text-transform: uppercase; letter-spacing: 0.2em; }
+
+#gauge-zone {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 0;
+  padding-bottom: 0;
+}
+#gc { display: block; width: 100%; max-width: 100%; }
+
+#end-labels {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 8px 0;
+  flex-shrink: 0;
+}
+.el { font-size: 1.9vw; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; }
+
+#p1-bar {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 8px 8px;
+}
+.nb {
+  width: 44px; height: 44px; border-radius: 6px; border: none;
+  background: #1e3a5f; color: #fff;
+  font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 800;
+  cursor: pointer; flex-shrink: 0; opacity: 0.4;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.12s, transform 0.12s;
+}
+.nb.on { opacity: 1; transform: scale(1.15); box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1e3a5f; }
+.nb:active { transform: scale(0.92) !important; opacity: 0.8; }
+.bdiv { width: 1px; height: 28px; background: #d1d5db; flex-shrink: 0; margin: 0 3px; }
+.rbtn {
+  height: 44px; padding: 0 16px; border: none; border-radius: 6px;
+  background: #1e3a5f; color: #fff;
+  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* PAGE 2 */
+.ey { font-size: 2.4vw; font-weight: 700; color: #9ca3af; letter-spacing: 0.1em; text-transform: uppercase; }
+.sr { display: flex; align-items: baseline; gap: 8px; }
+.sn { font-size: 28vw; font-weight: 900; line-height: 0.85; transition: color 0.2s; }
+.sd { font-size: 9vw; font-weight: 700; color: #d1d5db; }
+.vn { font-size: 10vw; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; transition: color 0.2s; }
+.vr { width: 130px; height: 9px; border-radius: 5px; transition: background 0.2s; }
+.vd { font-size: 4vh; font-weight: 700; color: #374151; text-align: center; line-height: 1.4; max-width: 88vw; }
+.nsb {
+  padding: 12px 40px; background: transparent; color: #9ca3af;
+  border: 1.5px solid #e5e7eb; border-radius: 7px;
+  font-family: 'Poppins', sans-serif; font-size: 1.6vw; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+</style>
+</head>
+<body>
+
+<div id="p1">
+  <div id="p1-title">
+    <div class="t1">Terrible Tech</div>
+    <div class="t2">Scam Scale™</div>
+  </div>
+  <div id="gauge-zone">
+    <canvas id="gc"></canvas>
+    <div id="end-labels">
+      <span class="el">actually works</span>
+      <span class="el">total scam</span>
+    </div>
+  </div>
+  <div id="p1-bar"></div>
+</div>
+
+<div id="p2">
+  <div class="ey">Terrible Tech — Scam Scale™</div>
+  <div class="sr">
+    <div class="sn" id="sn">5</div>
+    <div class="sd">/10</div>
+  </div>
+  <div class="vn" id="vn">Bold Claims</div>
+  <div class="vr" id="vr"></div>
+  <div class="vd" id="vd">The marketing vs reality gap is growing fast.</div>
+  <button class="nsb" onclick="back()">New Score</button>
+</div>
+
+<script>
+const BANDS=[null,
+  {name:"ACTUALLY WORKS",    desc:"Genuinely does what it claims. Rare around here.",  col:"#16a34a"},
+  {name:"MOSTLY WORKS",      desc:"Does the job with minor caveats. A Temu miracle.",  col:"#22c55e"},
+  {name:"WORKS-ISH",         desc:"Functional, but the claims are optimistic.",        col:"#84cc16"},
+  {name:"STRETCH THE TRUTH", desc:"The product exists. The claims, however, do not.",  col:"#eab308"},
+  {name:"BOLD CLAIMS",       desc:"The marketing vs reality gap is growing fast.",     col:"#f97316"},
+  {name:"MOSTLY SCAM",       desc:"Works, but not as advertised. Significant gap.",    col:"#fb923c"},
+  {name:"SCAM-ADJACENT",     desc:"A thin veneer of function over a pile of lies.",    col:"#ef4444"},
+  {name:"CERTIFIED SCAM",    desc:"The number they printed is not a real number.",     col:"#dc2626"},
+  {name:"IMPRESSIVE SCAM",   desc:"This takes audacity. Respect the commitment.",      col:"#b91c1c"},
+  {name:"TOTAL SCAM",        desc:"Temu looked you in the eye and lied. Twice.",       col:"#7f1d1d"}
+];
+const COLS=["#16a34a","#22c55e","#84cc16","#eab308","#f97316","#fb923c","#ef4444","#dc2626","#b91c1c","#7f1d1d"];
+
+let cur=5;
+const cv=document.getElementById('gc');
+const ctx=cv.getContext('2d');
+
+// Build buttons
+const bar=document.getElementById('p1-bar');
+const btns=[];
+for(let i=1;i<=10;i++){
+  const b=document.createElement('button');
+  b.className='nb'+(i===5?' on':'');
+  b.textContent=i; b.onclick=()=>pick(i);
+  bar.appendChild(b); btns.push(b);
+}
+bar.appendChild(Object.assign(document.createElement('div'),{className:'bdiv'}));
+const rb=document.createElement('button');
+rb.className='rbtn'; rb.textContent='Reveal Verdict'; rb.onclick=reveal;
+bar.appendChild(rb);
+
+function pick(v){
+  cur=v;
+  btns.forEach((b,i)=>b.classList.toggle('on',i+1===v));
+  draw(v);
+}
+
+function sizeAndDraw(){
+  // Size canvas purely from the gauge-zone element's actual rendered size
+  const zone = document.getElementById('gauge-zone');
+  const zW = zone.clientWidth;
+  const zH = zone.clientHeight;
+  // semicircle: W=2R, H=R+tail(44)
+  // from height: R = zH - 44
+  // from width:  R = zW/2
+  const R = Math.min(zW/2, zH - 44, 480);
+  cv.width  = Math.round(R * 2);
+  cv.height = Math.round(R + 44);
+  draw(cur);
+}
+
+function draw(score){
+  const W=cv.width, H=cv.height;
+  const cx=W/2, cy=H-38;
+  const R=W/2-3, iR=R*0.56, GAP=0.022;
+  ctx.clearRect(0,0,W,H);
+  for(let i=0;i<10;i++){
+    const step=Math.PI/10;
+    const a1=Math.PI+i*step+GAP, a2=Math.PI+(i+1)*step-GAP;
+    const active=(i+1)<=score;
+    ctx.beginPath(); ctx.arc(cx,cy,R,a1,a2); ctx.arc(cx,cy,iR,a2,a1,true); ctx.closePath();
+    ctx.fillStyle=active?COLS[i]:'#e5e7eb'; ctx.fill();
+    const mid=(a1+a2)/2, lr=(R+iR)/2;
+    const fs=Math.max(12,Math.round(R*0.09));
+    ctx.fillStyle=active?'rgba(255,255,255,0.96)':'#bbb';
+    ctx.font=`700 ${fs}px Poppins,sans-serif`;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(i+1, cx+lr*Math.cos(mid), cy+lr*Math.sin(mid));
+  }
+  const step=Math.PI/10, na=Math.PI+(score-1)*step+step/2;
+  const nLen=iR-14;
+  const tx=cx+nLen*Math.cos(na), ty=cy+nLen*Math.sin(na);
+  const perp=na+Math.PI/2, hw=Math.max(5,R*0.033);
+  const bx1=cx+hw*Math.cos(perp), by1=cy+hw*Math.sin(perp);
+  const bx2=cx-hw*Math.cos(perp), by2=cy-hw*Math.sin(perp);
+  const ttx=cx+R*0.09*Math.cos(na+Math.PI), tty=cy+R*0.09*Math.sin(na+Math.PI);
+  ctx.save(); ctx.shadowColor='rgba(0,0,0,0.2)'; ctx.shadowBlur=5; ctx.shadowOffsetY=2;
+  ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(bx1,by1); ctx.lineTo(ttx,tty); ctx.lineTo(bx2,by2);
+  ctx.closePath(); ctx.fillStyle='#1e3a5f'; ctx.fill(); ctx.restore();
+  const pr=Math.max(10,R*0.075);
+  ctx.beginPath(); ctx.arc(cx,cy,pr,0,Math.PI*2); ctx.fillStyle='#1e3a5f'; ctx.fill();
+  ctx.beginPath(); ctx.arc(cx,cy,pr*0.52,0,Math.PI*2); ctx.fillStyle='#fff'; ctx.fill();
+}
+
+function reveal(){
+  const b=BANDS[cur];
+  document.getElementById('sn').textContent=cur; document.getElementById('sn').style.color=b.col;
+  document.getElementById('vn').textContent=b.name; document.getElementById('vn').style.color=b.col;
+  document.getElementById('vr').style.background=b.col;
+  document.getElementById('vd').textContent=b.desc;
+  document.getElementById('p1').style.visibility='hidden';
+  document.getElementById('p2').style.visibility='visible';
+}
+function back(){
+  document.getElementById('p2').style.visibility='hidden';
+  document.getElementById('p1').style.visibility='visible';
+}
+
+window.addEventListener('resize', sizeAndDraw);
+document.fonts.ready.then(sizeAndDraw);
+</script>
+</body>
+</html>
