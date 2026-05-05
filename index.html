@@ -2,226 +2,222 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="white">
 <title>Scam Scale — Terrible Tech</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { width: 100%; height: 100%; background: #fff; font-family: 'Poppins', sans-serif; overflow: hidden; }
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;background:#fff;font-family:'Poppins',sans-serif;overflow:hidden;}
 
-/* Only one page visible at a time */
-#p1, #p2 {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#p1 { visibility: visible; }
-#p2 { visibility: hidden; justify-content: space-evenly; padding: 16px 20px; }
+.page{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;visibility:hidden;}
+.page.active{visibility:visible;}
 
-/* PAGE 1 */
-#p1-title { text-align: center; flex-shrink: 0; padding: 8px 0 0; line-height: 1.15; }
-.t1 { font-size: 4.8vw; font-weight: 900; color: #1e3a5f; text-transform: uppercase; letter-spacing: 0.04em; }
-.t2 { font-size: 3vw; font-weight: 800; color: #5A8EB4; text-transform: uppercase; letter-spacing: 0.2em; }
+/* ── PAGE 1 ── */
+#p1{padding:2vh 5vw 2vh;}
+.p1-title{text-align:center;margin-bottom:1.5vh;flex-shrink:0;}
+.p1-t1{display:block;font-size:clamp(22px,4.5vw,48px);font-weight:900;color:#1e3a5f;text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
+.p1-t2{display:block;font-size:clamp(12px,2.2vw,24px);font-weight:800;color:#5A8EB4;text-transform:uppercase;letter-spacing:0.2em;margin-top:3px;}
+.p1-divider{width:100%;height:1px;background:#e5e7eb;margin-bottom:1.5vh;flex-shrink:0;}
+.p1-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;flex:1;min-height:0;}
+.p1-col{display:flex;flex-direction:column;justify-content:space-evenly;}
+.p1-col:first-child{padding-right:4vw;border-right:1px solid #e5e7eb;}
+.p1-col:last-child{padding-left:4vw;}
+.band-row{display:flex;align-items:center;gap:clamp(10px,1.5vw,20px);}
+.band-num{width:clamp(36px,5vw,58px);height:clamp(36px,5vw,58px);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:clamp(16px,2.5vw,28px);font-weight:900;color:#fff;}
+.band-name{font-size:clamp(13px,2vw,22px);font-weight:800;text-transform:uppercase;letter-spacing:0.03em;line-height:1;}
+.p1-btn{margin-top:1.5vh;width:clamp(200px,30vw,340px);height:clamp(44px,6vh,60px);border:none;border-radius:8px;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:clamp(12px,1.6vw,18px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
 
-#gauge-zone {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  min-height: 0;
-  padding-bottom: 0;
-}
-#gc { display: block; width: 100%; max-width: 100%; }
+/* ── PAGE 2 ── */
+#p2{justify-content:space-between;padding:2vh 3vw 2vh;}
+.p2-title{text-align:center;flex-shrink:0;}
+.p2-t1{display:block;font-size:clamp(18px,3.5vw,38px);font-weight:900;color:#1e3a5f;text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
+.p2-t2{display:block;font-size:clamp(10px,1.8vw,20px);font-weight:800;color:#5A8EB4;text-transform:uppercase;letter-spacing:0.2em;margin-top:3px;}
+#gauge-wrap{flex:1;width:100%;display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden;}
+#gauge-wrap svg{width:100%;height:100%;}
+.p2-btns{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:clamp(4px,0.7vw,10px);padding-bottom:1vh;}
+.nb{width:clamp(40px,6.5vw,70px);height:clamp(40px,6vh,60px);border-radius:8px;border:none;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:clamp(14px,2.2vw,24px);font-weight:800;cursor:pointer;opacity:0.32;-webkit-tap-highlight-color:transparent;transition:opacity 0.12s,transform 0.12s,background 0.12s;}
+.nb.on{opacity:1;transform:scale(1.12);}
+.nb:active{transform:scale(0.91)!important;}
+.reveal-btn{margin-left:clamp(6px,1vw,14px);height:clamp(40px,6vh,60px);padding:0 clamp(14px,2vw,28px);border:none;border-radius:8px;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:clamp(9px,1.3vw,15px);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.back-btn{position:absolute;top:2vh;left:2vw;background:none;border:none;font-family:'Poppins',sans-serif;font-size:clamp(9px,1.2vw,13px);font-weight:700;color:#9ca3af;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 
-#p1-bar {
-  flex-shrink: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 2px 8px 10px;
-}
-.nb {
-  width: 44px; height: 44px; border-radius: 6px; border: none;
-  background: #1e3a5f; color: #fff;
-  font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 800;
-  cursor: pointer; flex-shrink: 0; opacity: 0.4;
-  -webkit-tap-highlight-color: transparent;
-  transition: opacity 0.12s, transform 0.12s;
-}
-.nb.on { opacity: 1; transform: scale(1.15); box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1e3a5f; }
-.nb:active { transform: scale(0.92) !important; opacity: 0.8; }
-.bdiv { width: 1px; height: 28px; background: #d1d5db; flex-shrink: 0; margin: 0 3px; }
-.rbtn {
-  height: 44px; padding: 0 16px; border: none; border-radius: 6px;
-  background: #1e3a5f; color: #fff;
-  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700;
-  letter-spacing: 0.07em; text-transform: uppercase;
-  cursor: pointer; white-space: nowrap; flex-shrink: 0;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* PAGE 2 */
-.ey { font-size: 2.2vw; font-weight: 700; color: #9ca3af; letter-spacing: 0.1em; text-transform: uppercase; }
-.sr { display: flex; align-items: baseline; gap: 8px; }
-.sn { font-size: 28vw; font-weight: 900; line-height: 0.85; transition: color 0.2s; }
-.sd { font-size: 9vw; font-weight: 700; color: #d1d5db; }
-.vn { font-size: 11vw; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; transition: color 0.2s; }
-.vr { width: 130px; height: 9px; border-radius: 5px; transition: background 0.2s; }
-.vd { font-size: 4.5vh; font-weight: 700; color: #374151; text-align: center; line-height: 1.4; max-width: 90vw; }
-.nsb {
-  padding: 14px 48px; background: transparent; color: #9ca3af;
-  border: 1.5px solid #e5e7eb; border-radius: 7px;
-  font-family: 'Poppins', sans-serif; font-size: 2vw; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
+/* ── PAGE 3 ── */
+#p3{justify-content:center;padding:3vh 4vw;}
+.p3-eyebrow{font-size:clamp(10px,1.8vw,18px);font-weight:700;color:#9ca3af;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1vh;}
+.p3-score-row{display:flex;align-items:baseline;gap:8px;line-height:1;}
+.p3-score{font-size:clamp(100px,28vw,260px);font-weight:900;line-height:0.85;transition:color 0.2s;}
+.p3-denom{font-size:clamp(32px,8vw,80px);font-weight:700;color:#d1d5db;}
+.p3-name{font-size:clamp(28px,7.5vw,80px);font-weight:900;letter-spacing:0.06em;text-transform:uppercase;text-align:center;transition:color 0.2s;margin-top:1vh;line-height:1;}
+.p3-bar{width:clamp(80px,14vw,160px);height:8px;border-radius:4px;margin:1.5vh auto;}
+.p3-desc{font-size:clamp(18px,3.2vw,36px);font-weight:700;color:#374151;text-align:center;line-height:1.3;max-width:85vw;}
+.p3-newbtn{margin-top:2.5vh;padding:clamp(10px,1.5vh,16px) clamp(28px,4vw,52px);background:transparent;color:#9ca3af;border:2px solid #e5e7eb;border-radius:8px;font-family:'Poppins',sans-serif;font-size:clamp(10px,1.5vw,16px);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 </style>
 </head>
 <body>
 
-<div id="p1">
-  <div id="p1-title">
-    <div class="t1">Terrible Tech</div>
-    <div class="t2">Scam Scale™</div>
+<!-- PAGE 1: LEGEND -->
+<div class="page active" id="p1">
+  <div class="p1-title">
+    <span class="p1-t1">Terrible Tech</span>
+    <span class="p1-t2">Scam Scale™</span>
   </div>
-  <div id="gauge-zone">
-    <canvas id="gc"></canvas>
+  <div class="p1-divider"></div>
+  <div class="p1-grid">
+    <div class="p1-col" id="col-left"></div>
+    <div class="p1-col" id="col-right"></div>
   </div>
-  <div id="p1-bar"></div>
+  <button class="p1-btn" onclick="show('p2')">Start Rating →</button>
 </div>
 
-<div id="p2">
-  <div class="ey">Terrible Tech — Scam Scale™</div>
-  <div class="sr">
-    <div class="sn" id="sn">5</div>
-    <div class="sd">/10</div>
+<!-- PAGE 2: GAUGE -->
+<div class="page" id="p2">
+  <button class="back-btn" onclick="show('p1')">← Legend</button>
+  <div class="p2-title">
+    <span class="p2-t1">Terrible Tech</span>
+    <span class="p2-t2">Scam Scale™</span>
   </div>
-  <div class="vn" id="vn">Bold Claims</div>
-  <div class="vr" id="vr"></div>
-  <div class="vd" id="vd">The marketing vs reality gap is growing fast.</div>
-  <button class="nsb" onclick="back()">New Score</button>
+  <div id="gauge-wrap">
+    <svg id="svg" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <g id="segs"></g>
+      <g id="seg-labels"></g>
+      <line id="nshadow" x1="300" y1="295" x2="300" y2="295" stroke="rgba(0,0,0,0.10)" stroke-width="9" stroke-linecap="round"/>
+      <line id="needle" x1="300" y1="295" x2="300" y2="295" stroke="#1e3a5f" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="300" cy="295" r="20" fill="#1e3a5f"/>
+      <circle cx="300" cy="295" r="9" fill="#fff"/>
+    </svg>
+  </div>
+  <div class="p2-btns" id="btns"></div>
+</div>
+
+<!-- PAGE 3: REVEAL -->
+<div class="page" id="p3">
+  <div class="p3-eyebrow">Terrible Tech — Scam Scale™</div>
+  <div class="p3-score-row">
+    <div class="p3-score" id="p3-score">—</div>
+    <div class="p3-denom">/10</div>
+  </div>
+  <div class="p3-name" id="p3-name"></div>
+  <div class="p3-bar" id="p3-bar"></div>
+  <div class="p3-desc" id="p3-desc"></div>
+  <button class="p3-newbtn" onclick="show('p2')">← New Score</button>
 </div>
 
 <script>
 const BANDS=[null,
   {name:"ACTUALLY WORKS",    desc:"Genuinely does what it claims. Rare around here.",  col:"#16a34a"},
   {name:"MOSTLY WORKS",      desc:"Does the job with minor caveats. A Temu miracle.",  col:"#22c55e"},
-  {name:"WORKS-ISH",         desc:"Functional, but the claims are optimistic.",        col:"#84cc16"},
+  {name:"WORKS-ISH",         desc:"Functional, but the claims are optimistic.",         col:"#84cc16"},
   {name:"STRETCH THE TRUTH", desc:"The product exists. The claims, however, do not.",  col:"#eab308"},
-  {name:"BOLD CLAIMS",       desc:"The marketing vs reality gap is growing fast.",     col:"#f97316"},
+  {name:"BOLD CLAIMS",       desc:"The marketing vs reality gap is growing fast.",      col:"#f97316"},
   {name:"MOSTLY SCAM",       desc:"Works, but not as advertised. Significant gap.",    col:"#fb923c"},
   {name:"SCAM-ADJACENT",     desc:"A thin veneer of function over a pile of lies.",    col:"#ef4444"},
   {name:"CERTIFIED SCAM",    desc:"The number they printed is not a real number.",     col:"#dc2626"},
   {name:"IMPRESSIVE SCAM",   desc:"This takes audacity. Respect the commitment.",      col:"#b91c1c"},
   {name:"TOTAL SCAM",        desc:"Temu looked you in the eye and lied. Twice.",       col:"#7f1d1d"}
 ];
-const COLS=["#16a34a","#22c55e","#84cc16","#eab308","#f97316","#fb923c","#ef4444","#dc2626","#b91c1c","#7f1d1d"];
 
-let cur=5;
-const cv=document.getElementById('gc');
-const ctx=cv.getContext('2d');
+// Build page 1 — number + name only, no desc
+const colL=document.getElementById('col-left');
+const colR=document.getElementById('col-right');
+BANDS.slice(1).forEach((b,i)=>{
+  const row=document.createElement('div');
+  row.className='band-row';
+  row.innerHTML=`<div class="band-num" style="background:${b.col}">${i+1}</div><div class="band-name" style="color:${b.col}">${b.name}</div>`;
+  (i<5?colL:colR).appendChild(row);
+});
 
-// Build buttons
-const bar=document.getElementById('p1-bar');
-const btns=[];
-for(let i=1;i<=10;i++){
-  const b=document.createElement('button');
-  b.className='nb'+(i===5?' on':'');
-  b.textContent=i; b.onclick=()=>pick(i);
-  bar.appendChild(b); btns.push(b);
+// Gauge
+const CX=300,CY=295,R=268,IR=146,GAP=0.025;
+const segsG=document.getElementById('segs');
+const labsG=document.getElementById('seg-labels');
+const needle=document.getElementById('needle');
+const nshadow=document.getElementById('nshadow');
+let cur=null;
+
+function polar(cx,cy,r,a){return[cx+r*Math.cos(a),cy+r*Math.sin(a)];}
+
+function buildGauge(score){
+  segsG.innerHTML='';labsG.innerHTML='';
+  for(let i=0;i<10;i++){
+    const step=Math.PI/10;
+    const a1=Math.PI+i*step+GAP;
+    const a2=Math.PI+(i+1)*step-GAP;
+    const lit=score!==null&&(i+1)<=score;
+    const col=lit?BANDS[i+1].col:'#e5e7eb';
+    const[ox1,oy1]=polar(CX,CY,R,a1);
+    const[ox2,oy2]=polar(CX,CY,R,a2);
+    const[ix2,iy2]=polar(CX,CY,IR,a2);
+    const[ix1,iy1]=polar(CX,CY,IR,a1);
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d',`M${ox1},${oy1} A${R},${R} 0 0,1 ${ox2},${oy2} L${ix2},${iy2} A${IR},${IR} 0 0,0 ${ix1},${iy1} Z`);
+    p.setAttribute('fill',col);
+    p.style.cursor='pointer';
+    p.addEventListener('click',()=>pick(i+1));
+    segsG.appendChild(p);
+    const mid=(a1+a2)/2,lr=(R+IR)/2;
+    const[lx,ly]=polar(CX,CY,lr,mid);
+    const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',lx);t.setAttribute('y',ly+6);
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('font-family','Poppins,sans-serif');
+    t.setAttribute('font-size','18');t.setAttribute('font-weight','800');
+    t.setAttribute('fill',lit?'rgba(255,255,255,0.95)':'#bbb');
+    t.style.pointerEvents='none';
+    t.textContent=i+1;
+    labsG.appendChild(t);
+  }
 }
-bar.appendChild(Object.assign(document.createElement('div'),{className:'bdiv'}));
-const rb=document.createElement('button');
-rb.className='rbtn'; rb.textContent='Reveal Verdict'; rb.onclick=reveal;
-bar.appendChild(rb);
+
+function moveNeedle(score){
+  const step=Math.PI/10;
+  const angle=Math.PI+(score-1)*step+step/2;
+  const[tx,ty]=polar(CX,CY,IR-18,angle);
+  needle.setAttribute('x2',tx);needle.setAttribute('y2',ty);
+  nshadow.setAttribute('x2',tx+3);nshadow.setAttribute('y2',ty+3);
+}
 
 function pick(v){
   cur=v;
-  btns.forEach((b,i)=>b.classList.toggle('on',i+1===v));
-  draw(v);
-}
-
-function sizeAndDraw(){
-  // Size canvas purely from the gauge-zone element's actual rendered size
-  const zone = document.getElementById('gauge-zone');
-  const zW = zone.clientWidth;
-  const zH = zone.clientHeight;
-  // semicircle: W=2R, H=R+tail(44)
-  // from height: R = zH - 44
-  // from width:  R = zW/2
-  const R = Math.min(zW/2, zH - 44, 480);
-  cv.width  = Math.round(R * 2);
-  cv.height = Math.round(R + 44);
-  draw(cur);
-}
-
-function draw(score){
-  const W=cv.width, H=cv.height;
-  const cx=W/2, cy=H-38;
-  const R=W/2-3, iR=R*0.56, GAP=0.022;
-  ctx.clearRect(0,0,W,H);
-  for(let i=0;i<10;i++){
-    const step=Math.PI/10;
-    const a1=Math.PI+i*step+GAP, a2=Math.PI+(i+1)*step-GAP;
-    const active=(i+1)<=score;
-    ctx.beginPath(); ctx.arc(cx,cy,R,a1,a2); ctx.arc(cx,cy,iR,a2,a1,true); ctx.closePath();
-    ctx.fillStyle=active?COLS[i]:'#e5e7eb'; ctx.fill();
-    const mid=(a1+a2)/2, lr=(R+iR)/2;
-    const fs=Math.max(12,Math.round(R*0.09));
-    ctx.fillStyle=active?'rgba(255,255,255,0.96)':'#bbb';
-    ctx.font=`700 ${fs}px Poppins,sans-serif`;
-    ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillText(i+1, cx+lr*Math.cos(mid), cy+lr*Math.sin(mid));
-  }
-  const step=Math.PI/10, na=Math.PI+(score-1)*step+step/2;
-  const nLen=iR-14;
-  const tx=cx+nLen*Math.cos(na), ty=cy+nLen*Math.sin(na);
-  const perp=na+Math.PI/2, hw=Math.max(5,R*0.033);
-  const bx1=cx+hw*Math.cos(perp), by1=cy+hw*Math.sin(perp);
-  const bx2=cx-hw*Math.cos(perp), by2=cy-hw*Math.sin(perp);
-  const ttx=cx+R*0.09*Math.cos(na+Math.PI), tty=cy+R*0.09*Math.sin(na+Math.PI);
-  ctx.save(); ctx.shadowColor='rgba(0,0,0,0.2)'; ctx.shadowBlur=5; ctx.shadowOffsetY=2;
-  ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(bx1,by1); ctx.lineTo(ttx,tty); ctx.lineTo(bx2,by2);
-  ctx.closePath(); ctx.fillStyle='#1e3a5f'; ctx.fill(); ctx.restore();
-  const pr=Math.max(10,R*0.075);
-  ctx.beginPath(); ctx.arc(cx,cy,pr,0,Math.PI*2); ctx.fillStyle='#1e3a5f'; ctx.fill();
-  ctx.beginPath(); ctx.arc(cx,cy,pr*0.52,0,Math.PI*2); ctx.fillStyle='#fff'; ctx.fill();
-
-  // Labels drawn on canvas at exact arc ends — left end is (cx-R, cy), right end is (cx+R, cy)
-  const lfs = Math.max(13, Math.round(R * 0.072));
-  ctx.font = `800 ${lfs}px Poppins,sans-serif`;
-  ctx.fillStyle = '#9ca3af';
-  ctx.textBaseline = 'middle';
-  ctx.textAlign = 'left';
-  ctx.fillText('ACTUALLY WORKS', cx - R + 2, cy - lfs * 0.1);
-  ctx.textAlign = 'right';
-  ctx.fillText('TOTAL SCAM', cx + R - 2, cy - lfs * 0.1);
+  document.querySelectorAll('.nb').forEach((btn,i)=>{
+    const on=i+1===v;
+    btn.classList.toggle('on',on);
+    btn.style.background=on?BANDS[v].col:'#1e3a5f';
+  });
+  buildGauge(v);
+  moveNeedle(v);
 }
 
 function reveal(){
+  if(!cur)return;
   const b=BANDS[cur];
-  document.getElementById('sn').textContent=cur; document.getElementById('sn').style.color=b.col;
-  document.getElementById('vn').textContent=b.name; document.getElementById('vn').style.color=b.col;
-  document.getElementById('vr').style.background=b.col;
-  document.getElementById('vd').textContent=b.desc;
-  document.getElementById('p1').style.visibility='hidden';
-  document.getElementById('p2').style.visibility='visible';
-}
-function back(){
-  document.getElementById('p2').style.visibility='hidden';
-  document.getElementById('p1').style.visibility='visible';
+  document.getElementById('p3-score').textContent=cur;
+  document.getElementById('p3-score').style.color=b.col;
+  document.getElementById('p3-name').textContent=b.name;
+  document.getElementById('p3-name').style.color=b.col;
+  document.getElementById('p3-bar').style.background=b.col;
+  document.getElementById('p3-desc').textContent=b.desc;
+  show('p3');
 }
 
-window.addEventListener('resize', sizeAndDraw);
-document.fonts.ready.then(sizeAndDraw);
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+const btnsEl=document.getElementById('btns');
+for(let i=1;i<=10;i++){
+  const b=document.createElement('button');
+  b.className='nb';b.textContent=i;b.onclick=()=>pick(i);
+  btnsEl.appendChild(b);
+}
+const rb=document.createElement('button');
+rb.className='reveal-btn';rb.textContent='Reveal Verdict';rb.onclick=reveal;
+btnsEl.appendChild(rb);
+
+buildGauge(null);
+moveNeedle(5);
 </script>
 </body>
 </html>
