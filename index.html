@@ -39,15 +39,6 @@ html, body { width: 100%; height: 100%; background: #fff; font-family: 'Poppins'
 }
 #gc { display: block; width: 100%; max-width: 100%; }
 
-#end-labels {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 3px 8px 0;
-  flex-shrink: 0;
-}
-.el { font-size: 1.9vw; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; }
-
 #p1-bar {
   flex-shrink: 0;
   width: 100%;
@@ -55,7 +46,7 @@ html, body { width: 100%; height: 100%; background: #fff; font-family: 'Poppins'
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 7px 8px 8px;
+  padding: 2px 8px 10px;
 }
 .nb {
   width: 44px; height: 44px; border-radius: 6px; border: none;
@@ -78,17 +69,17 @@ html, body { width: 100%; height: 100%; background: #fff; font-family: 'Poppins'
 }
 
 /* PAGE 2 */
-.ey { font-size: 2.4vw; font-weight: 700; color: #9ca3af; letter-spacing: 0.1em; text-transform: uppercase; }
+.ey { font-size: 2.2vw; font-weight: 700; color: #9ca3af; letter-spacing: 0.1em; text-transform: uppercase; }
 .sr { display: flex; align-items: baseline; gap: 8px; }
 .sn { font-size: 28vw; font-weight: 900; line-height: 0.85; transition: color 0.2s; }
 .sd { font-size: 9vw; font-weight: 700; color: #d1d5db; }
-.vn { font-size: 10vw; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; transition: color 0.2s; }
+.vn { font-size: 11vw; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; transition: color 0.2s; }
 .vr { width: 130px; height: 9px; border-radius: 5px; transition: background 0.2s; }
-.vd { font-size: 4vh; font-weight: 700; color: #374151; text-align: center; line-height: 1.4; max-width: 88vw; }
+.vd { font-size: 4.5vh; font-weight: 700; color: #374151; text-align: center; line-height: 1.4; max-width: 90vw; }
 .nsb {
-  padding: 12px 40px; background: transparent; color: #9ca3af;
+  padding: 14px 48px; background: transparent; color: #9ca3af;
   border: 1.5px solid #e5e7eb; border-radius: 7px;
-  font-family: 'Poppins', sans-serif; font-size: 1.6vw; font-weight: 700;
+  font-family: 'Poppins', sans-serif; font-size: 2vw; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -103,10 +94,6 @@ html, body { width: 100%; height: 100%; background: #fff; font-family: 'Poppins'
   </div>
   <div id="gauge-zone">
     <canvas id="gc"></canvas>
-    <div id="end-labels">
-      <span class="el">actually works</span>
-      <span class="el">total scam</span>
-    </div>
   </div>
   <div id="p1-bar"></div>
 </div>
@@ -207,6 +194,16 @@ function draw(score){
   const pr=Math.max(10,R*0.075);
   ctx.beginPath(); ctx.arc(cx,cy,pr,0,Math.PI*2); ctx.fillStyle='#1e3a5f'; ctx.fill();
   ctx.beginPath(); ctx.arc(cx,cy,pr*0.52,0,Math.PI*2); ctx.fillStyle='#fff'; ctx.fill();
+
+  // Labels drawn on canvas at exact arc ends — left end is (cx-R, cy), right end is (cx+R, cy)
+  const lfs = Math.max(13, Math.round(R * 0.072));
+  ctx.font = `800 ${lfs}px Poppins,sans-serif`;
+  ctx.fillStyle = '#9ca3af';
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'left';
+  ctx.fillText('ACTUALLY WORKS', cx - R + 2, cy - lfs * 0.1);
+  ctx.textAlign = 'right';
+  ctx.fillText('TOTAL SCAM', cx + R - 2, cy - lfs * 0.1);
 }
 
 function reveal(){
