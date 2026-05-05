@@ -6,102 +6,103 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="white">
 <title>Scam Scale — Terrible Tech</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;height:100%;background:#fff;font-family:'Poppins',sans-serif;overflow:hidden;}
-
 .page{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;visibility:hidden;}
 .page.active{visibility:visible;}
 
-/* ── PAGE 1 ── */
-#p1{padding:2vh 5vw 2vh;}
-.p1-title{text-align:center;margin-bottom:1.5vh;flex-shrink:0;}
-.p1-t1{display:block;font-size:clamp(22px,4.5vw,48px);font-weight:900;color:#1e3a5f;text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
-.p1-t2{display:block;font-size:clamp(12px,2.2vw,24px);font-weight:800;color:#5A8EB4;text-transform:uppercase;letter-spacing:0.2em;margin-top:3px;}
-.p1-divider{width:100%;height:1px;background:#e5e7eb;margin-bottom:1.5vh;flex-shrink:0;}
-.p1-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;flex:1;min-height:0;}
+/* PAGE 1 */
+#p1{padding:1.5vh 4vw 1.5vh;}
+.p1-head{text-align:center;flex-shrink:0;margin-bottom:1vh;}
+.p1-t1{display:block;font-size:5.5vw;font-weight:900;color:#1e3a5f;text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
+.p1-t2{display:block;font-size:2.8vw;font-weight:800;color:#5A8EB4;text-transform:uppercase;letter-spacing:0.2em;margin-top:2px;}
+.p1-rule{width:100%;height:1px;background:#e5e7eb;flex-shrink:0;margin-bottom:1vh;}
+.p1-grid{display:grid;grid-template-columns:1fr 1fr;width:100%;flex:1;min-height:0;}
 .p1-col{display:flex;flex-direction:column;justify-content:space-evenly;}
-.p1-col:first-child{padding-right:4vw;border-right:1px solid #e5e7eb;}
-.p1-col:last-child{padding-left:4vw;}
-.band-row{display:flex;align-items:center;gap:clamp(10px,1.5vw,20px);}
-.band-num{width:clamp(36px,5vw,58px);height:clamp(36px,5vw,58px);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:clamp(16px,2.5vw,28px);font-weight:900;color:#fff;}
-.band-name{font-size:clamp(13px,2vw,22px);font-weight:800;text-transform:uppercase;letter-spacing:0.03em;line-height:1;}
-.p1-btn{margin-top:1.5vh;width:clamp(200px,30vw,340px);height:clamp(44px,6vh,60px);border:none;border-radius:8px;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:clamp(12px,1.6vw,18px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+.p1-col:first-child{padding-right:3vw;border-right:1px solid #e5e7eb;}
+.p1-col:last-child{padding-left:3vw;}
+.brow{display:flex;align-items:center;gap:1.8vw;}
+.bswatch{width:6.5vw;height:6.5vw;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:3.5vw;font-weight:900;color:#fff;}
+.bname{font-size:2.6vw;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;line-height:1;}
+.p1-btn{flex-shrink:0;margin-top:1.5vh;width:32vw;height:6.5vh;border:none;border-radius:8px;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:1.8vw;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 
-/* ── PAGE 2 ── */
-#p2{justify-content:space-between;padding:2vh 3vw 2vh;}
-.p2-title{text-align:center;flex-shrink:0;}
-.p2-t1{display:block;font-size:clamp(18px,3.5vw,38px);font-weight:900;color:#1e3a5f;text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
-.p2-t2{display:block;font-size:clamp(10px,1.8vw,20px);font-weight:800;color:#5A8EB4;text-transform:uppercase;letter-spacing:0.2em;margin-top:3px;}
-#gauge-wrap{flex:1;width:100%;display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden;}
-#gauge-wrap svg{width:100%;height:100%;}
-.p2-btns{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:clamp(4px,0.7vw,10px);padding-bottom:1vh;}
-.nb{width:clamp(40px,6.5vw,70px);height:clamp(40px,6vh,60px);border-radius:8px;border:none;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:clamp(14px,2.2vw,24px);font-weight:800;cursor:pointer;opacity:0.32;-webkit-tap-highlight-color:transparent;transition:opacity 0.12s,transform 0.12s,background 0.12s;}
-.nb.on{opacity:1;transform:scale(1.12);}
+/* PAGE 2 */
+#p2{justify-content:space-between;padding:1.5vh 2vw 1.5vh;}
+.p2-head{text-align:center;flex-shrink:0;}
+.p2-t1{display:block;font-size:4vw;font-weight:900;color:#1e3a5f;text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
+.p2-t2{display:block;font-size:2vw;font-weight:800;color:#5A8EB4;text-transform:uppercase;letter-spacing:0.2em;margin-top:2px;}
+#gwrap{flex:1;width:100%;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#gwrap svg{width:100%;height:100%;}
+.p2-bar{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:0.8vw;padding-bottom:1vh;}
+.nb{width:7vw;height:7.5vh;border-radius:8px;border:none;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:2.6vw;font-weight:800;cursor:pointer;opacity:0.28;-webkit-tap-highlight-color:transparent;transition:opacity 0.12s,transform 0.12s,background 0.12s;}
+.nb.on{opacity:1;transform:scale(1.1);}
 .nb:active{transform:scale(0.91)!important;}
-.reveal-btn{margin-left:clamp(6px,1vw,14px);height:clamp(40px,6vh,60px);padding:0 clamp(14px,2vw,28px);border:none;border-radius:8px;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:clamp(9px,1.3vw,15px);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-.back-btn{position:absolute;top:2vh;left:2vw;background:none;border:none;font-family:'Poppins',sans-serif;font-size:clamp(9px,1.2vw,13px);font-weight:700;color:#9ca3af;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.rvbtn{margin-left:1vw;height:7.5vh;padding:0 2.2vw;border:none;border-radius:8px;background:#1e3a5f;color:#fff;font-family:'Poppins',sans-serif;font-size:1.4vw;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.backbtn{position:absolute;top:1.5vh;left:2vw;background:none;border:none;font-family:'Poppins',sans-serif;font-size:1.2vw;font-weight:700;color:#9ca3af;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 
-/* ── PAGE 3 ── */
-#p3{justify-content:center;padding:3vh 4vw;}
-.p3-eyebrow{font-size:clamp(10px,1.8vw,18px);font-weight:700;color:#9ca3af;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1vh;}
-.p3-score-row{display:flex;align-items:baseline;gap:8px;line-height:1;}
-.p3-score{font-size:clamp(100px,28vw,260px);font-weight:900;line-height:0.85;transition:color 0.2s;}
-.p3-denom{font-size:clamp(32px,8vw,80px);font-weight:700;color:#d1d5db;}
-.p3-name{font-size:clamp(28px,7.5vw,80px);font-weight:900;letter-spacing:0.06em;text-transform:uppercase;text-align:center;transition:color 0.2s;margin-top:1vh;line-height:1;}
-.p3-bar{width:clamp(80px,14vw,160px);height:8px;border-radius:4px;margin:1.5vh auto;}
-.p3-desc{font-size:clamp(18px,3.2vw,36px);font-weight:700;color:#374151;text-align:center;line-height:1.3;max-width:85vw;}
-.p3-newbtn{margin-top:2.5vh;padding:clamp(10px,1.5vh,16px) clamp(28px,4vw,52px);background:transparent;color:#9ca3af;border:2px solid #e5e7eb;border-radius:8px;font-family:'Poppins',sans-serif;font-size:clamp(10px,1.5vw,16px);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+/* PAGE 3 */
+#p3{justify-content:center;align-items:center;padding:0 4vw;gap:0;}
+.p3-ey{font-size:1.6vw;font-weight:700;color:#9ca3af;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5vh;}
+.p3-sr{display:flex;align-items:baseline;gap:6px;line-height:1;}
+.p3-sn{font-size:26vw;font-weight:900;line-height:0.85;transition:color 0.2s;}
+.p3-sd{font-size:7vw;font-weight:700;color:#d1d5db;}
+.p3-vn{font-size:8vw;font-weight:900;letter-spacing:0.05em;text-transform:uppercase;text-align:center;transition:color 0.2s;line-height:1;margin-top:0.8vh;}
+.p3-bar{width:12vw;height:8px;border-radius:4px;margin:1.2vh auto;}
+.p3-desc{font-size:3vw;font-weight:700;color:#374151;text-align:center;line-height:1.25;max-width:90vw;margin-bottom:2.5vh;}
+.p3-new{padding:1.2vh 3.5vw;background:transparent;color:#9ca3af;border:2px solid #e5e7eb;border-radius:8px;font-family:'Poppins',sans-serif;font-size:1.4vw;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 </style>
 </head>
 <body>
 
-<!-- PAGE 1: LEGEND -->
+<!-- P1: LEGEND -->
 <div class="page active" id="p1">
-  <div class="p1-title">
+  <div class="p1-head">
     <span class="p1-t1">Terrible Tech</span>
     <span class="p1-t2">Scam Scale™</span>
   </div>
-  <div class="p1-divider"></div>
+  <div class="p1-rule"></div>
   <div class="p1-grid">
-    <div class="p1-col" id="col-left"></div>
-    <div class="p1-col" id="col-right"></div>
+    <div class="p1-col" id="cl"></div>
+    <div class="p1-col" id="cr"></div>
   </div>
   <button class="p1-btn" onclick="show('p2')">Start Rating →</button>
 </div>
 
-<!-- PAGE 2: GAUGE -->
+<!-- P2: GAUGE -->
 <div class="page" id="p2">
-  <button class="back-btn" onclick="show('p1')">← Legend</button>
-  <div class="p2-title">
+  <button class="backbtn" onclick="show('p1')">← Legend</button>
+  <div class="p2-head">
     <span class="p2-t1">Terrible Tech</span>
     <span class="p2-t2">Scam Scale™</span>
   </div>
-  <div id="gauge-wrap">
+  <div id="gwrap">
     <svg id="svg" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <g id="segs"></g>
-      <g id="seg-labels"></g>
-      <line id="nshadow" x1="300" y1="295" x2="300" y2="295" stroke="rgba(0,0,0,0.10)" stroke-width="9" stroke-linecap="round"/>
-      <line id="needle" x1="300" y1="295" x2="300" y2="295" stroke="#1e3a5f" stroke-width="6" stroke-linecap="round"/>
-      <circle cx="300" cy="295" r="20" fill="#1e3a5f"/>
-      <circle cx="300" cy="295" r="9" fill="#fff"/>
+      <g id="slbls"></g>
+      <g id="needleg" style="display:none">
+        <line id="nshadow" x1="300" y1="295" x2="300" y2="295" stroke="rgba(0,0,0,0.10)" stroke-width="9" stroke-linecap="round"/>
+        <line id="needle" x1="300" y1="295" x2="300" y2="295" stroke="#1e3a5f" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="300" cy="295" r="20" fill="#1e3a5f"/>
+        <circle cx="300" cy="295" r="9" fill="#fff"/>
+      </g>
     </svg>
   </div>
-  <div class="p2-btns" id="btns"></div>
+  <div class="p2-bar" id="btns"></div>
 </div>
 
-<!-- PAGE 3: REVEAL -->
+<!-- P3: REVEAL -->
 <div class="page" id="p3">
-  <div class="p3-eyebrow">Terrible Tech — Scam Scale™</div>
-  <div class="p3-score-row">
-    <div class="p3-score" id="p3-score">—</div>
-    <div class="p3-denom">/10</div>
+  <div class="p3-ey">Terrible Tech — Scam Scale™</div>
+  <div class="p3-sr">
+    <div class="p3-sn" id="p3sn">—</div>
+    <div class="p3-sd">/10</div>
   </div>
-  <div class="p3-name" id="p3-name"></div>
-  <div class="p3-bar" id="p3-bar"></div>
-  <div class="p3-desc" id="p3-desc"></div>
-  <button class="p3-newbtn" onclick="show('p2')">← New Score</button>
+  <div class="p3-vn" id="p3vn"></div>
+  <div class="p3-bar" id="p3bar"></div>
+  <div class="p3-desc" id="p3desc"></div>
+  <button class="p3-new" onclick="show('p2')">← New Score</button>
 </div>
 
 <script>
@@ -118,41 +119,39 @@ const BANDS=[null,
   {name:"TOTAL SCAM",        desc:"Temu looked you in the eye and lied. Twice.",       col:"#7f1d1d"}
 ];
 
-// Build page 1 — number + name only, no desc
-const colL=document.getElementById('col-left');
-const colR=document.getElementById('col-right');
+// Page 1
 BANDS.slice(1).forEach((b,i)=>{
   const row=document.createElement('div');
-  row.className='band-row';
-  row.innerHTML=`<div class="band-num" style="background:${b.col}">${i+1}</div><div class="band-name" style="color:${b.col}">${b.name}</div>`;
-  (i<5?colL:colR).appendChild(row);
+  row.className='brow';
+  row.innerHTML=`<div class="bswatch" style="background:${b.col}">${i+1}</div><div class="bname" style="color:${b.col}">${b.name}</div>`;
+  document.getElementById(i<5?'cl':'cr').appendChild(row);
 });
 
 // Gauge
 const CX=300,CY=295,R=268,IR=146,GAP=0.025;
 const segsG=document.getElementById('segs');
-const labsG=document.getElementById('seg-labels');
+const slbls=document.getElementById('slbls');
 const needle=document.getElementById('needle');
 const nshadow=document.getElementById('nshadow');
+const needleg=document.getElementById('needleg');
 let cur=null;
 
 function polar(cx,cy,r,a){return[cx+r*Math.cos(a),cy+r*Math.sin(a)];}
 
 function buildGauge(score){
-  segsG.innerHTML='';labsG.innerHTML='';
+  segsG.innerHTML='';slbls.innerHTML='';
   for(let i=0;i<10;i++){
     const step=Math.PI/10;
     const a1=Math.PI+i*step+GAP;
     const a2=Math.PI+(i+1)*step-GAP;
     const lit=score!==null&&(i+1)<=score;
-    const col=lit?BANDS[i+1].col:'#e5e7eb';
     const[ox1,oy1]=polar(CX,CY,R,a1);
     const[ox2,oy2]=polar(CX,CY,R,a2);
     const[ix2,iy2]=polar(CX,CY,IR,a2);
     const[ix1,iy1]=polar(CX,CY,IR,a1);
     const p=document.createElementNS('http://www.w3.org/2000/svg','path');
     p.setAttribute('d',`M${ox1},${oy1} A${R},${R} 0 0,1 ${ox2},${oy2} L${ix2},${iy2} A${IR},${IR} 0 0,0 ${ix1},${iy1} Z`);
-    p.setAttribute('fill',col);
+    p.setAttribute('fill',lit?BANDS[i+1].col:'#e5e7eb');
     p.style.cursor='pointer';
     p.addEventListener('click',()=>pick(i+1));
     segsG.appendChild(p);
@@ -166,7 +165,7 @@ function buildGauge(score){
     t.setAttribute('fill',lit?'rgba(255,255,255,0.95)':'#bbb');
     t.style.pointerEvents='none';
     t.textContent=i+1;
-    labsG.appendChild(t);
+    slbls.appendChild(t);
   }
 }
 
@@ -180,6 +179,7 @@ function moveNeedle(score){
 
 function pick(v){
   cur=v;
+  needleg.style.display='';
   document.querySelectorAll('.nb').forEach((btn,i)=>{
     const on=i+1===v;
     btn.classList.toggle('on',on);
@@ -192,12 +192,12 @@ function pick(v){
 function reveal(){
   if(!cur)return;
   const b=BANDS[cur];
-  document.getElementById('p3-score').textContent=cur;
-  document.getElementById('p3-score').style.color=b.col;
-  document.getElementById('p3-name').textContent=b.name;
-  document.getElementById('p3-name').style.color=b.col;
-  document.getElementById('p3-bar').style.background=b.col;
-  document.getElementById('p3-desc').textContent=b.desc;
+  document.getElementById('p3sn').textContent=cur;
+  document.getElementById('p3sn').style.color=b.col;
+  document.getElementById('p3vn').textContent=b.name;
+  document.getElementById('p3vn').style.color=b.col;
+  document.getElementById('p3bar').style.background=b.col;
+  document.getElementById('p3desc').textContent=b.desc;
   show('p3');
 }
 
@@ -213,11 +213,10 @@ for(let i=1;i<=10;i++){
   btnsEl.appendChild(b);
 }
 const rb=document.createElement('button');
-rb.className='reveal-btn';rb.textContent='Reveal Verdict';rb.onclick=reveal;
+rb.className='rvbtn';rb.textContent='Reveal Verdict';rb.onclick=reveal;
 btnsEl.appendChild(rb);
 
 buildGauge(null);
-moveNeedle(5);
 </script>
 </body>
 </html>
